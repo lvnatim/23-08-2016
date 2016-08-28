@@ -1,0 +1,12 @@
+// 1. Closures are when child functions have access to methods and variables in their parent scopes.
+// The access of these variables are what defines a closure, not what the function returns.
+
+// 2. This function uses a function called .max() defined in the module Math, but uses the .apply()
+// method to return a function in the global scope with the null argument. It has access to global
+// variables, but still uses the arrayOfNumbers argument (which is a local variable defined in the
+// function).
+
+// 3. The module pattern allows us to namespace private and public methods, and is used in creating
+// handy functions that don't pollute with our global scope. Helper functions exist within the module
+// that can be used by other functions, but can be unavailable to the global scope to avoid breaking of
+// the code. 

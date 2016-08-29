@@ -1,0 +1,68 @@
+<section class="header">
+  <ul class="menu">
+    <li><a href="#songs">List</a></li>
+    <li><a data-open="submitSongModal">Add</a></li>
+    <li><a data-open="searchSongModal">Search</a></li>
+    <li><span class="status-message"></span></li>
+  </ul>
+</section>
+
+
+<div class="reveal" id="submitSongModal" data-reveal>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <form class="new-song">
+    <input type="hidden" id="id">
+    <input placeholder="title" type="text" id="title"/>
+    <input placeholder="artist" type="text" id="artist"/>
+    <input placeholder="youtube embed url" type="text" id="url"/>
+    <button type="button" id="submit-song" class="hollow warning button">Submit Song</button>
+  </form>
+</div>
+
+<div class="reveal" id="searchSongModal" data-reveal>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <form class="search-song">
+    <input placeholder="Song or Artist name" type="text" id="search-term"/>
+    <button type="button" id="search-song" class="hollow warning button">Search</button>
+  </form>
+</div>
+
+<div class="reveal" id="editSongModal" data-reveal>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <form id="edit-song-form">
+    <input type="hidden" id="edit-song-id">
+    <input placeholder="title" type="text" id="edit-title"/>
+    <input placeholder="artist" type="text" id="edit-artist"/>
+    <input placeholder="url" type="text" id="edit-url"/>
+    <button type="button" class="update-song hollow warning button">Update Song!</button>
+    </form>
+</div>
+
+<div class="wrap row">
+  <div class="small-8 columns">
+  <div id="songs" class="songs">
+    <% @songs.each do |song| %>
+    <div data-song-id="<%= song.id %>" class="song">
+      <h2><%= song.title %></h1>
+      <h3><%= song.artist %></h2>
+      <a href="<%= song.url %>">Click here to listen!</a>
+      <a class="delete-song" data-open="confirmDeleteModal">Delete</button>
+      <a class="edit-song" data-open="editSongModal">Edit</a>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="song song-template" style="display:none;">
+  <h2 class="title"></h1>
+  <h3 class="artist"></h2>
+  <a class= "url" href="">Click here to listen!</a>
+  <button class="delete-song"> Delete </button>
+  <a class="edit-song" data-open="editSongModal">Edit</a>
+</div>
